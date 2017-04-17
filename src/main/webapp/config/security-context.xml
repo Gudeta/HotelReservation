@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+ <!-- 	<security:http>
+		<security:intercept-url pattern="/**" access="ROLE_USER"/>
+		<security:form-login/>
+		<security:logout logout-url="/j_security_logout"/>
+	</security:http> -->
+
+<!-- 	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager> -->
+	
+	<security:global-method-security pre-post-annotations="enabled" /> 
+	<security:http use-expressions="true"> 
+		<security:intercept-url pattern="/home" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+<!-- 		<security:intercept-url pattern="/student/**" access="hasRole('ROLE_STUDENT')"/> --> 	
+	<!-- <security:intercept-url pattern="/faculty/**" access="hasRole('ROLE_FACULTY')"/> -->
+		<security:form-login login-page="/login" 
+			login-processing-url="/postLogin" 
+			username-parameter="username" 
+			password-parameter="password" 
+			default-target-url="/home" 
+			always-use-default-target="false" 
+			authentication-failure-url="/loginfailed"/> 
+		<security:logout logout-success-url="/logout" delete-cookies="JSESSIONID" 
+			logout-url= "/doLogout"/> 
+		<security:http-basic/> 
+		<security:remember-me data-source-ref="dataSource" 
+			token-validity-seconds="86400" remember-me-parameter="keepMe"/> 
+	</security:http>
+		 
+	<security:authentication-manager> 
+		<security:authentication-provider> 
+			<!-- <security:password-encoder hash="bcrypt" /> --> 
+			<security:jdbc-user-service data-source-ref="dataSource" 
+				users-by-username-query="select username,password,enabled from users where username=?" 
+				authorities-by-username-query="select u1.username, u2.authority from users u1, user_roles u2 where u1.userid = u2.userid and u1.username =?" /> 
+		</security:authentication-provider> 
+	</security:authentication-manager>
+</beans>

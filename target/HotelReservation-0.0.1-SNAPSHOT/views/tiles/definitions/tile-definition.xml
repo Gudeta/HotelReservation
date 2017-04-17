@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="baseLayout" template="/views/tiles/templates/baselayout.jsp">
+		<put-attribute name="title" value="HotelReservation" />
+		<put-attribute name="css" value="/views/tiles/templates/js.jsp" />
+		<put-attribute name="js" value="/views/tiles/templates/css.jsp" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+		<put-attribute name="side" value="" />
+	</definition>
+	<definition name="reservationtemplate" template="/views/tiles/templates/reservationtemplate.jsp">
+		<put-attribute name="title" value="HotelReservation" />
+		<put-attribute name="css" value="/views/tiles/templates/js.jsp" />
+		<put-attribute name="js" value="/views/tiles/templates/css.jsp" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+		<put-attribute name="side" value="" />
+	</definition>
+
+	<definition name="loginForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/login.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+	<definition name="admin" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> 
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	<definition name="staff" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> 
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigatorstaff.jsp" />
+		<put-attribute name="body" value="/views/tiles/staffBody.jsp" />
+	</definition>
+
+	<definition name="branchAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewBranch.jsp" /><!-- 
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> -->
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	
+	<definition name="branchEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/branchFormEdit.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> 
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	
+	<definition name="staffAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewStaff.jsp" /><!-- 
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> -->
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	
+	<definition name="roomAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewRoom.jsp" /><!-- 
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> -->
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	
+	<definition name="roomEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/roomFormEdit.jsp" /><!-- 
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> -->
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	
+	<definition name="reservationAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition> 
+	
+	<definition name="index" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/index.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+	<definition name="fillinfo" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/CustomeInfo.jsp" />
+	</definition>
+	<definition name="fillinfostaffs" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/CustomeInfoStaff.jsp" />
+	</definition>
+	<definition name="home" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/home.jsp" />		
+	</definition>
+	<definition name="homestaff" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/homestaff.jsp" />		
+	</definition>
+		<definition name="roomselectionform" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/roomselection.jsp" />		
+	</definition>
+	<definition name="roomselectionformstaff" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/roomselectionStaff.jsp" />		
+	</definition>
+	<definition name="staffbill" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/staffbill.jsp" />		
+	</definition>
+	<definition name="bill" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/bill.jsp" />		
+	</definition>
+	<definition name="success" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/success.jsp" />		
+	</definition>
+	<definition name="successstaff" extends="reservationtemplate">
+		<put-attribute name="navigation" value="/views/tiles/templates/reservationheader.jsp" />
+		<put-attribute name="body" value="/views/tiles/successstaff.jsp" />		
+	</definition>
+</tiles-definitions>
