@@ -28,6 +28,7 @@ public class BranchController {
 	BranchService branchService;
 	
 	private Long newBranchId;
+	
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
 	public String getForm(@ModelAttribute("newBranch") Branch branch, Model model) {
 		Iterable<Branch> branches=branchservice.getAllBranch();

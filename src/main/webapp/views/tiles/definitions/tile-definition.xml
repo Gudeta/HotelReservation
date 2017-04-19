@@ -64,6 +64,13 @@
 		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
 	</definition>
 	
+	<definition name="staffEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/staffFormEdit.jsp" /><!-- 
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" /> -->
+		<put-attribute name="side" value="/views/tiles/templates/sidenavigator.jsp" />
+	</definition>
+	
 	<definition name="roomAddForm" extends="baseLayout">
 		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
 		<put-attribute name="body" value="/views/tiles/addNewRoom.jsp" /><!-- 

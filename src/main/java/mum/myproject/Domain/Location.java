@@ -1,17 +1,21 @@
 package mum.myproject.Domain;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Embeddable
 public class Location {
-	
+	@NotEmpty(message="no empty field accepted")
 	private int houseNumber;
+	@NotEmpty(message="no empty field accepted")
 	private String street;
+	@NotEmpty(message="no empty field accepted")
 	private String city;
+	@NotEmpty(message="no empty field accepted")
 	private String state;
+	@NotEmpty(message="no empty field accepted")
 	private String zipcode;
 	
 	

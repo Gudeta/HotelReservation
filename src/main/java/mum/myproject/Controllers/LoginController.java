@@ -72,8 +72,7 @@ public class LoginController {
 				}
 			}
 			if (!found) {
-				// result.rejectValue("password", "password.branch", "Password
-				// username mismatch.");
+				 result.rejectValue("password", "password.branch", "Password username mismatch.");
 				return "loginForm";
 			}
 			if (isStaff) {

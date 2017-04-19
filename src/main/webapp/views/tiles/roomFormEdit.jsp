@@ -17,7 +17,6 @@ body {
 <h1><strong>Edit Room Form</strong></h1>
 <form:form modelAttribute="editRoom" action="/HotelReservation/room/edit"  method="post" >
 	<table >
-	
 		<tr>
 			<td>Room Number</td>
 			<td><form:input path="roomNumber" type="text" value="${oldRoom.roomNumber}"/></td>
@@ -42,7 +41,7 @@ body {
 							<c:if test="${oldRoom.roomtype.roomtypeName=='Queen'}">selected</c:if>>queen</option>
 						<option value="King"
 							<c:if test="${oldRoom.roomtype.roomtypeName=='King'}">selected</c:if>>king</option>
-																		
+															
 				</select></td>
 				<td><form:errors path="roomtypeName" cssStyle="color:red;"></form:errors></td>
 

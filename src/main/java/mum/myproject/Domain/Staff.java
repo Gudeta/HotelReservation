@@ -20,6 +20,7 @@ public class Staff {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	@NotEmpty(message="no empty field accpted")
 	private String staffFirstName;
 	@NotEmpty(message="no empty field accpted")
 	

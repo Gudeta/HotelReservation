@@ -17,39 +17,37 @@ body {
 
 <div align="center">
 	<h2>
-		<b><i>Add New Staff</i></b>
+		<b><i>Edit Staff</i></b>
 	</h2>
-	<form:form modelAttribute="newStaff"
-		action="/HotelReservation/staff/add" method="post">
+	<form:form modelAttribute="editStaff"  action="/HotelReservation/staff/edit" method="post">
 		<table>
-
 			<tr>
 				<td>Staff First Name</td>
-				<td><form:input path="staffFirstName" type="text" /></td>
+				<td><form:input path="staffFirstName" type="text" value="${editStaff.staffFirstName}"  /></td>
 				<td><form:errors path="staffFirstName" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>Staff Last Name</td>
-				<td><form:input path="staffLastName" type="text" /></td>
+				<td><form:input path="staffLastName" type="text" value="${editStaff.staffLastName}"  /></td>
 				<td><form:errors path="staffLastName" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>Ssn</td>
-				<td><form:input path="staffSsn" type="text" /></td>
+				<td><form:input path="staffSsn" type="text" value="${editStaff.staffSsn}"  /></td>
 				<td><form:errors path="staffSsn" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><form:input path="staffEmail" type="text" /></td>
+				<td><form:input path="staffEmail" type="text" value="${editStaff.staffEmail}"  /></td>
 				<td><form:errors path="staffEmail" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>Phone Number</td>
-				<td><form:input path="staffPhoneNumber" type="text" /></td>
+				<td><form:input path="staffPhoneNumber" type="text" value="${editStaff.staffPhoneNumber}"  /></td>
 				<td><form:errors path="staffPhoneNumber" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
@@ -70,7 +68,7 @@ body {
 			</tr>
 			<tr>
 				<td>Role</td>
-				<td><select name="role">
+				<td><select name="role" value="${editStaff.role}"  >
 						<option value="Admin">Admin</option>
 						<option value="Staff">Staff</option>
 
@@ -80,13 +78,13 @@ body {
 
 			<tr>
 				<td>UserName</td>
-				<td><form:input path="staffUserName" type="text" /></td>
+				<td><form:input path="staffUserName" type="text" value="${editStaff.staffUserName}"  /></td>
 				<td><form:errors path="staffUserName" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><form:input path="staffPassword" type="password" /></td>
+				<td><form:input path="staffPassword" type="password" value="${editStaff.staffPassword}"  /></td>
 				<td><form:errors path="staffPassword" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
@@ -97,7 +95,7 @@ body {
 			</tr>
 
 		</table>
-	</form:form>
+</form:form>
 </div>
 <div align="left">
 	<h3>

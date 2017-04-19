@@ -237,10 +237,10 @@ public class ReservationController {
 			this.roomservice.save(room);
 		}
 		SimpleMailMessage emailMessage = new SimpleMailMessage();
-		emailMessage.setFrom("gudetabesso@gmail.com");
+		emailMessage.setFrom("seniorprojectundergrad2017@gmail.com");
 		emailMessage.setTo(this.curCustomer.getEmail());
-		emailMessage.setSubject("Reservation@Maharishi Hotel");
-		String message="";
+		emailMessage.setSubject("Reservation@Maharishi Invincible Hotel");
+		String message="Reservation Conformation !";
 		message+="\nCustomer Name: "+this.curReservatin.getCustomer().getfName()+" "+this.curReservatin.getCustomer().getlName();
 		message+="\nCheckin Date: "+this.curReservatin.getCheckInDate().toString();
 		message+="\nCheckout Date: "+this.curReservatin.getCheckOutDate().toString();

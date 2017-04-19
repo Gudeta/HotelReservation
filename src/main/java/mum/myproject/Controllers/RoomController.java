@@ -27,7 +27,8 @@ public class RoomController {
 	IRoomService roomservice;
 	@Autowired
 	IBranchService branchservice;
-	Long curentRoomID=null;
+	private Long curentRoomID=null;
+	
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newRoom") RoomDummy room,Model model){
 		List<Branch> branches=new ArrayList<>();
