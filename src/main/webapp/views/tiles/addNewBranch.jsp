@@ -64,6 +64,9 @@ body {
 </div>
 <div align="left">
 <h3><b><u>* * * Branch Lists * * *</u></b></h3>
+<c:if test="${not empty deleteMessegeError}"><div style="color: #C73724; background-color: #FFC685; border: 1px solid #F26E5C; padding: 5px; border-radius: 4px; ">${deleteMessegeError}</div></c:if>
+<c:if test="${not empty deleteMessegeSuccess}"><div style="color: #29BA2E; background-color: #AFDEB1; border: 1px solid #40A843; padding: 5px; border-radius: 4px; ">${deleteMessegeSuccess}</div></c:if>
+
 <table class="table table-hover">
  <thead>
 	<tr>
@@ -77,10 +80,13 @@ body {
 		<td>&nbsp;</td>
 	</tr>
 	</thead>
-	<c:forEach var="branch" items="${branchlist}">
+	<% int rowNumber=1; %>
+	<c:forEach var="branch" items="${branchlist}" >
 	   <tbody>
 		<tr>
-			<td>${branch.branchId}</td>
+			
+		
+			<td><%= rowNumber++ %></td>
 			<td>${branch.branchName}</td>
 			<td>${branch.location.houseNumber}</td>
 			<td>${branch.location.street}</td>

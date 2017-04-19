@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mum.myproject.Domain.Branch;
 import mum.myproject.Repositories.BranchRepository;
+import mum.myproject.Repositories.ReservationRepository;
 import mum.myproject.Services.IBranchService;
 
 @Service
@@ -14,6 +15,11 @@ import mum.myproject.Services.IBranchService;
 public class BranchService implements IBranchService {
 	@Autowired
 	BranchRepository branchRepository;
+	
+	@Autowired
+	ReservationRepository reservationRepository;
+	
+	
 	
 	@Override
 	public void save(Branch branchObj) {
@@ -27,8 +33,15 @@ public class BranchService implements IBranchService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public boolean delete(Long id) {
+		//check the validity of the deletion
+		
+		Branch branch=branchRepository.findOne(id);
+		if(reservationRepository.findReserevationByBranch(branch).size()>0){
+			return false;
+		}
 		this.branchRepository.delete(id);
+		return true;
 		
 	}
 
@@ -50,5 +63,13 @@ public class BranchService implements IBranchService {
 		
 		
 	}
+
+	@Override
+	public Iterable<Branch> findAllInDescendingOrder() {
+
+		return branchRepository.findAllInDescendingOrder();
+	}
+	
+	
 
 }

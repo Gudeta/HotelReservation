@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@NamedQuery(name = "Branch.findAllInDescendingOrder", query="select b from Branch b order by branchId desc ")
 public class Branch {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

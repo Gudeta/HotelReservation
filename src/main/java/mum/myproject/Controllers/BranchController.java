@@ -3,6 +3,8 @@ package mum.myproject.Controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,22 +32,28 @@ public class BranchController {
 	private Long newBranchId;
 	
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-	public String getForm(@ModelAttribute("newBranch") Branch branch, Model model) {
-		Iterable<Branch> branches=branchservice.getAllBranch();
-		List<Branch> branchlist=new ArrayList<Branch>();
-		if(branches!=null){
-			for(Branch b:branches){
-				System.out.println(b.getBranchName());
-				branchlist.add(b);
-			}
-		}
+	public String getForm(@ModelAttribute("newBranch") Branch branch, Model model,HttpServletRequest request) {
+//		Iterable<Branch> branches=branchservice.findAllInDescendingOrder();
+//		List<Branch> branchlist=new ArrayList<Branch>();
+//		if(branches!=null){
+//			for(Branch b:branches){
+//				System.out.println(b.getBranchName());
+//				branchlist.add(b);
+//			}
+//		}
+//		if(request.getAttribute("deleteMessegeError")!=null)
+//		request.setAttribute("deleteMessegeError", request.getAttribute("deleteMessegeError"));
 		
-		model.addAttribute("branchlist", branchlist);	
+//		if(request.getAttribute("deleteMessegeSuccess")!=null)
+//		request.setAttribute("deleteMessegeSuccess", request.getAttribute("deleteMessegeSuccess"));
+
+		model.addAttribute("branchlist", this.getBranches());
 		return "branchAddForm";
 	}
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
 	public String stsave(@ModelAttribute("newBranch") @Valid Branch branchObj, BindingResult result, Model model) {
+		
 		if (result.hasErrors()) {
 			return "branchAddForm";
 		} else {
@@ -80,15 +88,37 @@ public class BranchController {
 	}
 
 	@RequestMapping(value = "/delete/{branchId}", method = RequestMethod.GET)
-	public String delete(@PathVariable("branchId") Long branchId) {
-		branchservice.delete(branchId);
-		return "redirect:/branch/add";
+	public String delete(@ModelAttribute("newBranch") Branch branch, @PathVariable("branchId") Long branchId, HttpServletRequest request,Model model) {
+		if(!branchservice.delete(branchId)){
+			request.setAttribute("deleteMessegeError","Some reservation have been made. You can't delete this branch !");
+		}
+		else{
+			request.setAttribute("deleteMessegeSuccess","You have successfully deleted the branch!");
+
+		}
+			
+		model.addAttribute("branchlist", this.getBranches());
+
+
+		return "branchAddForm";
 	}
 
 	@ModelAttribute("branchlist")
 	public Iterable<Branch> showList() {
 		Iterable<Branch> branchList = branchservice.getAllBranch();
 		return branchList;
+	}
+	
+	public List<Branch> getBranches(){
+		Iterable<Branch> branches=branchservice.findAllInDescendingOrder();
+		List<Branch> branchlist=new ArrayList<Branch>();
+		if(branches!=null){
+			for(Branch b:branches){
+				System.out.println(b.getBranchName());
+				branchlist.add(b);
+			}
+		}
+		return branchlist;
 	}
 
 }

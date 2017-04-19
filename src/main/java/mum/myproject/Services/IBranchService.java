@@ -8,9 +8,11 @@ public interface IBranchService {
 
 	public Branch getBranchById(long id);
 	public void editBranch(Branch branch);
-	public void delete(Long id);
+	public boolean delete(Long id);
 
 	public Iterable<Branch> getAllBranch();
 	
 	public Branch findByBranchName(String name);
+
+	public Iterable<Branch> findAllInDescendingOrder();
 }
