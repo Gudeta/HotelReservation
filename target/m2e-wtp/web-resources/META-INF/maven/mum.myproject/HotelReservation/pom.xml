@@ -168,7 +168,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		
 		<!-- START - Spring WebFlow -->	
-		<webflow-version>2.4.4.RELEASE</webflow-version>
+		<webflow-version>2.4.6.RELEASE</webflow-version>
 		<spring-framework-version>4.3.1.RELEASE</spring-framework-version>
 		<springsecurity-version>4.0.1.RELEASE</springsecurity-version>
 		<slf4j-version>1.7.5</slf4j-version>	
